@@ -1,0 +1,71 @@
+{
+  "courses": [
+    {
+      "id": "1",
+      "courseName": "Angular Fundamentals",
+      "instructorName": "Ahmed Ali",
+      "category": "Frontend",
+      "duration": 20,
+      "price": 1500,
+      "status": "Active",
+      "description": "Master the core concepts of Angular including routing, reactive forms, components, dependency injection, and state management in this complete modern course.",
+      "createdDate": "2026-06-01"
+    },
+    {
+      "id": "2",
+      "courseName": "Advanced NestJS Microservices",
+      "instructorName": "Sarah Connor",
+      "category": "Backend",
+      "duration": 35,
+      "price": 2200,
+      "status": "Active",
+      "description": "Learn to design, scale, and build resilient Backend microservice architectures using NestJS, RabbitMQ, gRPC, and Redis.",
+      "createdDate": "2026-06-05"
+    },
+    {
+      "id": "3",
+      "courseName": "UI/UX Design Systems",
+      "instructorName": "John Doe",
+      "category": "Design",
+      "duration": 15,
+      "price": 800,
+      "status": "Draft",
+      "description": "Build cohesive, scalable design systems in Figma and learn how to translate them to UI frameworks smoothly.",
+      "createdDate": "2026-06-10"
+    },
+    {
+      "id": "4",
+      "courseName": "React Clean Code & Testing",
+      "instructorName": "Emily Watson",
+      "category": "Frontend",
+      "duration": 25,
+      "price": 1800,
+      "status": "Archived",
+      "description": "Write clean React components using clean code principles. Master Vitest, React Testing Library, and Playwright.",
+      "createdDate": "2026-05-15"
+    },
+    {
+      "id": "5",
+      "courseName": "Introduction to Docker & Kubernetes",
+      "instructorName": "Alex Mercer",
+      "category": "DevOps",
+      "duration": 18,
+      "price": 1200,
+      "status": "Active",
+      "description": "A beginner-friendly guide to containerizing your web applications and deploying them to local and cloud Kubernetes clusters.",
+      "createdDate": "2026-06-12"
+    },
+    {
+      "courseName": "Introduction to ",
+      "instructorName": "John Doe",
+      "category": "Design",
+      "duration": 1,
+      "price": 111,
+      "status": "Draft",
+      "description": "",
+      "createdDate": "2026-06-24",
+      "id": "ZqMFwLHA_mc"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

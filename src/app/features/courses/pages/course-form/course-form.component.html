@@ -1,0 +1,228 @@
+<div class="max-w-2xl mx-auto space-y-6 animate-fade-in">
+  <!-- Back Button -->
+  <div>
+    <a 
+      routerLink="/courses" 
+      class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-slate-200 transition-colors font-medium cursor-pointer"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+      Back to Dashboard
+    </a>
+  </div>
+
+  <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-8 backdrop-blur-md shadow-2xl">
+    <!-- Header -->
+    <div class="mb-8">
+      <h1 class="text-2xl font-extrabold text-slate-100 tracking-tight">
+        {{ isEditMode() ? 'Edit Course Details' : 'Create New Course' }}
+      </h1>
+      <p class="text-slate-400 mt-1 text-sm">
+        Please fill in the required details of the course program below.
+      </p>
+    </div>
+
+    <!-- Form -->
+    <form [formGroup]="courseForm" (ngSubmit)="onSubmit()" class="space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Course Name -->
+        <div class="md:col-span-2">
+          <label for="courseName" class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
+            Course Name <span class="text-rose-500">*</span>
+          </label>
+          <input 
+            id="courseName" 
+            type="text" 
+            formControlName="courseName"
+            placeholder="e.g. Introduction to TypeScript"
+            [class.border-rose-500]="isFieldInvalid('courseName')"
+            [class.focus:ring-rose-500\/20]="isFieldInvalid('courseName')"
+            [class.focus:border-rose-500]="isFieldInvalid('courseName')"
+            class="w-full px-4 py-2.5 bg-slate-900 border border-slate-750 focus:border-indigo-500 rounded-xl text-slate-100 placeholder-slate-500 outline-none text-sm transition-all focus:ring-2 focus:ring-indigo-500/25"
+          />
+          @if (isFieldInvalid('courseName')) {
+            <span class="text-xs text-rose-400 font-medium mt-1.5 block">
+              @if (courseForm.get('courseName')?.errors?.['required']) {
+                Course name is required.
+              } @else if (courseForm.get('courseName')?.errors?.['minlength']) {
+                Must be at least 3 characters.
+              }
+            </span>
+          }
+        </div>
+
+        <!-- Instructor Name -->
+        <div>
+          <label for="instructorName" class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
+            Instructor Name <span class="text-rose-500">*</span>
+          </label>
+          <input 
+            id="instructorName" 
+            type="text" 
+            formControlName="instructorName"
+            placeholder="e.g. Dr. Jane Doe"
+            [class.border-rose-500]="isFieldInvalid('instructorName')"
+            [class.focus:ring-rose-500\/20]="isFieldInvalid('instructorName')"
+            [class.focus:border-rose-500]="isFieldInvalid('instructorName')"
+            class="w-full px-4 py-2.5 bg-slate-900 border border-slate-750 focus:border-indigo-500 rounded-xl text-slate-100 placeholder-slate-500 outline-none text-sm transition-all focus:ring-2 focus:ring-indigo-500/25"
+          />
+          @if (isFieldInvalid('instructorName')) {
+            <span class="text-xs text-rose-400 font-medium mt-1.5 block">
+              Instructor name is required.
+            </span>
+          }
+        </div>
+
+        <!-- Category -->
+        <div>
+          <label for="category" class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
+            Category <span class="text-rose-500">*</span>
+          </label>
+          <select 
+            id="category" 
+            formControlName="category"
+            [class.border-rose-500]="isFieldInvalid('category')"
+            [class.focus:ring-rose-500\/20]="isFieldInvalid('category')"
+            [class.focus:border-rose-500]="isFieldInvalid('category')"
+            class="w-full px-4 py-2.5 bg-slate-900 border border-slate-750 focus:border-indigo-500 rounded-xl text-slate-100 outline-none text-sm transition-all focus:ring-2 focus:ring-indigo-500/25"
+          >
+            <option value="" disabled selected>Select category...</option>
+            <option value="Frontend">Frontend</option>
+            <option value="Backend">Backend</option>
+            <option value="Design">Design</option>
+            <option value="DevOps">DevOps</option>
+            <option value="Data Science">Data Science</option>
+          </select>
+          @if (isFieldInvalid('category')) {
+            <span class="text-xs text-rose-400 font-medium mt-1.5 block">
+              Category is required.
+            </span>
+          }
+        </div>
+
+        <!-- Duration in Hours -->
+        <div>
+          <label for="duration" class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
+            Duration (Hours) <span class="text-rose-500">*</span>
+          </label>
+          <input 
+            id="duration" 
+            type="number" 
+            formControlName="duration"
+            placeholder="e.g. 36"
+            [class.border-rose-500]="isFieldInvalid('duration')"
+            [class.focus:ring-rose-500\/20]="isFieldInvalid('duration')"
+            [class.focus:border-rose-500]="isFieldInvalid('duration')"
+            class="w-full px-4 py-2.5 bg-slate-900 border border-slate-750 focus:border-indigo-500 rounded-xl text-slate-100 placeholder-slate-500 outline-none text-sm transition-all focus:ring-2 focus:ring-indigo-500/25"
+          />
+          @if (isFieldInvalid('duration')) {
+            <span class="text-xs text-rose-400 font-medium mt-1.5 block">
+              @if (courseForm.get('duration')?.errors?.['required']) {
+                Duration is required.
+              } @else if (courseForm.get('duration')?.errors?.['min']) {
+                Duration must be greater than 0.
+              }
+            </span>
+          }
+        </div>
+
+        <!-- Price -->
+        <div>
+          <label for="price" class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
+            Price (USD) <span class="text-rose-500">*</span>
+          </label>
+          <input 
+            id="price" 
+            type="number" 
+            formControlName="price"
+            placeholder="e.g. 1500"
+            [class.border-rose-500]="isFieldInvalid('price')"
+            [class.focus:ring-rose-500\/20]="isFieldInvalid('price')"
+            [class.focus:border-rose-500]="isFieldInvalid('price')"
+            class="w-full px-4 py-2.5 bg-slate-900 border border-slate-750 focus:border-indigo-500 rounded-xl text-slate-100 placeholder-slate-500 outline-none text-sm transition-all focus:ring-2 focus:ring-indigo-500/25"
+          />
+          @if (isFieldInvalid('price')) {
+            <span class="text-xs text-rose-400 font-medium mt-1.5 block">
+              @if (courseForm.get('price')?.errors?.['required']) {
+                Price is required.
+              } @else if (courseForm.get('price')?.errors?.['min']) {
+                Price must be 0 or greater.
+              }
+            </span>
+          }
+        </div>
+
+        <!-- Status -->
+        <div>
+          <label for="status" class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
+            Status <span class="text-rose-500">*</span>
+          </label>
+          <select 
+            id="status" 
+            formControlName="status"
+            [class.border-rose-500]="isFieldInvalid('status')"
+            [class.focus:ring-rose-500\/20]="isFieldInvalid('status')"
+            [class.focus:border-rose-500]="isFieldInvalid('status')"
+            class="w-full px-4 py-2.5 bg-slate-900 border border-slate-750 focus:border-indigo-500 rounded-xl text-slate-100 outline-none text-sm transition-all focus:ring-2 focus:ring-indigo-500/25"
+          >
+            <option value="Active">Active</option>
+            <option value="Draft">Draft</option>
+            <option value="Archived">Archived</option>
+          </select>
+          @if (isFieldInvalid('status')) {
+            <span class="text-xs text-rose-400 font-medium mt-1.5 block">
+              Status is required.
+            </span>
+          }
+        </div>
+
+        <!-- Description -->
+        <div class="md:col-span-2">
+          <label for="description" class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
+            Description <span class="text-slate-500">(Optional)</span>
+          </label>
+          <textarea 
+            id="description" 
+            formControlName="description"
+            rows="4"
+            placeholder="Brief description of the course contents and syllabus..."
+            [class.border-rose-500]="isFieldInvalid('description')"
+            [class.focus:ring-rose-500\/20]="isFieldInvalid('description')"
+            [class.focus:border-rose-500]="isFieldInvalid('description')"
+            class="w-full px-4 py-2.5 bg-slate-900 border border-slate-750 focus:border-indigo-500 rounded-xl text-slate-100 placeholder-slate-500 outline-none text-sm transition-all focus:ring-2 focus:ring-indigo-500/25 resize-none"
+          ></textarea>
+          <div class="flex items-center justify-between mt-1 text-[10px] text-slate-500">
+            <span>Maximum 500 characters</span>
+            <span>{{ courseForm.get('description')?.value?.length || 0 }} / 500</span>
+          </div>
+          @if (isFieldInvalid('description')) {
+            <span class="text-xs text-rose-400 font-medium mt-1.5 block">
+              Description cannot exceed 500 characters.
+            </span>
+          }
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-3 pt-6 border-t border-slate-750/60">
+        <button 
+          [disabled]="isLoading()"
+          type="submit" 
+          class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm rounded-xl disabled:opacity-50 disabled:pointer-events-none transition-all cursor-pointer shadow-lg shadow-indigo-900/20"
+        >
+          @if (isLoading()) {
+            Saving...
+          } @else {
+            {{ isEditMode() ? 'Save Changes' : 'Create Course' }}
+          }
+        </button>
+        <a 
+          routerLink="/courses" 
+          class="px-5 py-2.5 bg-slate-700 hover:bg-slate-650 text-slate-200 hover:text-slate-100 font-semibold text-sm rounded-xl border border-slate-650 transition-all cursor-pointer"
+        >
+          Cancel
+        </a>
+      </div>
+    </form>
+  </div>
+</div>
