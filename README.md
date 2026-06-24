@@ -69,6 +69,6 @@ npm run test -- --watch=false
 |---|---|
 | **Candidate Name** | Mahmoud Nabil Elkholy |
 | **Task Name** | Course Management Dashboard |
-| **GitHub Repository Link** | *[Add your GitHub repo link here]* |
+| **GitHub Repository Link** | https://github.com/Mahmoudnabil911/course-management-dashboard |
 | **Live Demo Link, if available** | N/A - Local Mock API used |
 | **Notes** | JSON Server Mock API is set up. All requested bonus features (Lazy Loading, Guards, Skeleton Loaders, Pagination, Toast Notifications) are fully implemented. Component templates have been strictly separated into `.html` files for clean architecture. |
