@@ -54,17 +54,6 @@
       "status": "Active",
       "description": "A beginner-friendly guide to containerizing your web applications and deploying them to local and cloud Kubernetes clusters.",
       "createdDate": "2026-06-12"
-    },
-    {
-      "courseName": "Introduction to ",
-      "instructorName": "John Doe",
-      "category": "Design",
-      "duration": 1,
-      "price": 111,
-      "status": "Draft",
-      "description": "",
-      "createdDate": "2026-06-24",
-      "id": "ZqMFwLHA_mc"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

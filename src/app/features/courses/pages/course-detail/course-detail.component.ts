@@ -44,6 +44,10 @@ export class CourseDetailComponent implements OnInit {
         this.errorState.set(err.message || 'Failed to load course details.');
         this.isLoading.set(false);
         this.toastService.error('Failed to load course details.');
+        // Redirect back to dashboard replacing current 404 URL in history
+        setTimeout(() => {
+          this.router.navigate(['/courses'], { replaceUrl: true });
+        }, 1500);
       }
     });
   }

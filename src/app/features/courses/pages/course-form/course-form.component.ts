@@ -60,7 +60,7 @@ export class CourseFormComponent implements OnInit, HasUnsavedChanges {
       error: (err) => {
         this.toastService.error(`Failed to load course: ${err.message}`);
         this.isLoading.set(false);
-        this.router.navigate(['/courses']);
+        this.router.navigate(['/courses'], { replaceUrl: true });
       }
     });
   }
